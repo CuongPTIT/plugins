@@ -372,6 +372,13 @@ class _GoogleMapState extends State<GoogleMap> {
     _circles[circleId].onTap();
   }
 
+  void onGroundOverlayTap(GroundOverlayId groundOverlayId) {
+    assert(groundOverlayId != null);
+    if (_groundOverlays[groundOverlayId]?.onTap != null) {
+      _groundOverlays[groundOverlayId].onTap();
+    }
+  }
+
   void onInfoWindowTap(MarkerId markerId) {
     assert(markerId != null);
     if (_markers[markerId]?.infoWindow?.onTap != null) {
