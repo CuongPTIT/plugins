@@ -96,8 +96,8 @@ static double ToDouble(NSNumber* data) { return [FLTGoogleMapJsonConversions toD
                                                     mapView:_mapView
                                                   registrar:registrar];
     _groundOverlaysController = [[FLTGroundOverlaysController alloc] init:_channel
-                                                    mapView:_mapView
-                                                  registrar:registrar];
+                                                                  mapView:_mapView
+                                                                registrar:registrar];
     id markersToAdd = args[@"markersToAdd"];
     if ([markersToAdd isKindOfClass:[NSArray class]]) {
       [_markersController addMarkers:markersToAdd];
@@ -116,7 +116,7 @@ static double ToDouble(NSNumber* data) { return [FLTGoogleMapJsonConversions toD
     }
     id groundOverlaysToAdd = args[@"groundOverlaysToAdd"];
     if ([groundOverlaysToAdd isKindOfClass:[NSArray class]]) {
-      [_groundOverlaysToAdd addGroundOverlays:groundOverlaysToAdd];
+      [_groundOverlaysController addGroundOverlays:groundOverlaysToAdd];
     }
   }
   return self;
@@ -306,7 +306,7 @@ static double ToDouble(NSNumber* data) { return [FLTGoogleMapJsonConversions toD
       [_circlesController removeCircleIds:circleIdsToRemove];
     }
     result(nil);
-  }  else if ([call.method isEqualToString:@"groundOverlays#update"]) {
+  } else if ([call.method isEqualToString:@"groundOverlays#update"]) {
     id groundOverlaysToAdd = call.arguments[@"groundOverlaysToAdd"];
     if ([groundOverlaysToAdd isKindOfClass:[NSArray class]]) {
       [_groundOverlaysController addGroundOverlays:groundOverlaysToAdd];
